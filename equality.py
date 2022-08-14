@@ -7,6 +7,7 @@ import numpy as np
 from sklearn.model_selection import train_test_split
 from torch.utils.data import Dataset, DataLoader
 
+
 ap = argparse.ArgumentParser()
 ap.add_argument('--train_length', dest='train_length', type=int, default=100)
 ap.add_argument('--test_length', dest='test_length', type=int, default=100)

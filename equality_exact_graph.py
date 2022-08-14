@@ -95,6 +95,7 @@ class Model(torch.nn.Module):
         z = self.output_layer(y[0])
         return z
 
+
 length_ls = []
 accuracy_ls = []
 ce_ls = []

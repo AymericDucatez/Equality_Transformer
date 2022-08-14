@@ -1,6 +1,7 @@
 import torch
 import math
 
+
 class SigmoidAttention(torch.nn.Module):
     def __init__(self, embed_dim, num_heads):
         super(SigmoidAttention, self).__init__()

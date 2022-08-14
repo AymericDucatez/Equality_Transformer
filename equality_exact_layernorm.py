@@ -7,6 +7,7 @@ import argparse
 import copy
 from tqdm import tqdm
 
+
 ap = argparse.ArgumentParser()
 ap.add_argument('--length', type=int, default=100)
 ap.add_argument('--steps', type=int, default=100)
