@@ -139,7 +139,7 @@ class SecondLayer(torch.nn.TransformerEncoderLayer):
 
         self.linear2.weight = torch.nn.Parameter(torch.add(A,B))
         #We add a small bias in order to avoid zero division during Layernorm 
-        self.linear2.bias = torch.nn.Parameter(torch.tensor([0]*14 + [-10e-7] + [-10e-7]))    
+        self.linear2.bias = torch.nn.Parameter(torch.tensor([0]*14 + [-10e-7] + [10e-7]))    
 
     def layernorm(self,x):
         y = x
