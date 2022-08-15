@@ -7,7 +7,7 @@ import argparse
 import copy
 from tqdm import tqdm
 import matplotlib.pyplot as plt
-
+import numpy as np
 
 ap = argparse.ArgumentParser()
 ap.add_argument('--length', type=int, default=100)
@@ -139,7 +139,7 @@ class SecondLayer(torch.nn.TransformerEncoderLayer):
 
         self.linear2.weight = torch.nn.Parameter(torch.add(A,B))
         #We add a small bias in order to avoid zero division during Layernorm 
-        self.linear2.bias = torch.nn.Parameter(torch.tensor([-10e-9]*8+[10e-9]*8))    
+        self.linear2.bias = torch.nn.Parameter(torch.tensor([0]*14 + [-10e-7] + [-10e-7]))    
 
     def layernorm(self,x):
         y = x
@@ -231,6 +231,8 @@ for n in tqdm(range(1,args.length+1)):
     ce_ls.append(loss/total/math.log(2))
     accuracy_ls.append(correct/total)
 
+layernorm_data = np.array([[length_ls, ce_ls, accuracy_ls]])
+np.save('layernorm_data_array.npy', layernorm_data)
 # Figure    
 fig, (ax_1, ax_2) = plt.subplots(2,1)
 
